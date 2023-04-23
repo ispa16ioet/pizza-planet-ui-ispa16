@@ -22,3 +22,15 @@ function createOrderTemplate(order) {
     let template = $("#order-item-template")[0].innerHTML;
     return Mustache.render(template, order);
 }
+
+
+
+function changeState(id){
+    console.log('id',id)
+    fetch(`http://127.0.0.1:5000/order/change_state/${id}`)
+    .then(response => response.json())
+    .then(orders => {
+        location.reload(true);
+    });
+
+}
