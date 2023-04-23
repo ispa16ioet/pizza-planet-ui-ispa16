@@ -40,7 +40,13 @@
             <a class="nav-link" href="/app/ingredient/ingredients.html">Ingredients</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/app/beverage/beverage.html">Beverage</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/app/size/sizes.html">Sizes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/app/report/report.html">Report</a>
           </li>
         </ul>
       </nav>
@@ -99,6 +105,7 @@
               <tr>
                 <th class="w-50">Choose a size</th>
                 <th class="w-50">Choose your ingredients</th>
+                <th class="w-50">Choose your beverage</th>
               </tr>
             </thead>
             <tbody>
@@ -119,6 +126,17 @@
                     <template id="ingredients-template">
                       <div class="form-check">
                         <input name="ingredients" value="{{_id}}" class="form-check-input" type="checkbox" />
+                        <label class="form-check-label" for="defaultCheck1"> {{name}} - ${{price}} </label>
+                      </div>
+                    </template>
+                    <tbody></tbody>
+                  </table>
+                </td>
+                <td>
+                  <table id="beverage">
+                    <template id="beverage-template">
+                      <div class="form-check">
+                        <input name="beverages" value="{{_id}}" class="form-check-input" type="checkbox" />
                         <label class="form-check-label" for="defaultCheck1"> {{name}} - ${{price}} </label>
                       </div>
                     </template>

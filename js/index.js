@@ -1,3 +1,4 @@
+
 /**
  * POST the order on /pizza
  * @param order 
@@ -36,8 +37,13 @@ orderForm.submit(event => {
  */
 function getOrderData() {
     let ingredients = [];
+    let beverages = [];
     $.each($("input[name='ingredients']:checked"), function (el) {
         ingredients.push($(this).val());
+    });
+
+    $.each($("input[name='beverages']:checked"), function (el) {
+        beverages.push($(this).val());
     });
 
     return {
@@ -46,7 +52,8 @@ function getOrderData() {
         client_address: $("input[name='address']").val(),
         client_phone: $("input[name='phone']").val(),
         size_id: $("input[name='size']:checked").val(),
-        ingredients
+        ingredients,
+        beverages
     };
 }
 
@@ -72,6 +79,16 @@ function fetchIngredients() {
         });
 }
 
+function fetchBeverages() {
+    fetch('http://127.0.0.1:5000/beverage/')
+        .then(response => response.json())
+        .then(beverage => {
+            let rows = beverage.map(element => createBeverageTemplate(element));
+            let table = $("#beverage tbody");
+            table.append(rows);
+        });
+}
+
 function fetchOrderSizes() {
     fetch('http://127.0.0.1:5000/size/')
         .then(response => response.json())
@@ -86,6 +103,10 @@ function createIngredientTemplate(ingredient) {
     let template = $("#ingredients-template")[0].innerHTML;
     return Mustache.render(template, ingredient);
 }
+function createBeverageTemplate(ingredient) {
+    let template = $("#beverage-template")[0].innerHTML;
+    return Mustache.render(template, ingredient);
+}
 
 function createSizeTemplate(size) {
     let template = $("#sizes-template")[0].innerHTML;
@@ -95,6 +116,7 @@ function createSizeTemplate(size) {
 function loadInformation() {
     fetchIngredients();
     fetchOrderSizes();
+    fetchBeverages();
 }
 
 
