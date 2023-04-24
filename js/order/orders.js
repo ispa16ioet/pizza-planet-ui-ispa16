@@ -27,7 +27,12 @@ function createOrderTemplate(order) {
 
 function changeState(id){
     console.log('id',id)
-    fetch(`http://127.0.0.1:5000/order/change_state/${id}`)
+    fetch(`http://127.0.0.1:5000/order/change_state/${id}`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+    })
     .then(response => response.json())
     .then(orders => {
         location.reload(true);
