@@ -26,13 +26,7 @@
     <header class="header-section container-fluid">
       <nav class="navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="/">
-          <img
-            src="/images/image4.png"
-            width="50"
-            height="50"
-            class="d-inline-block align-top"
-            alt=""
-          />
+          <img src="/images/image4.png" width="50" height="50" class="d-inline-block align-top" alt="" />
           L'ultima Cena
         </a>
         <ul class="navbar-nav mr-auto"></ul>
@@ -46,12 +40,16 @@
             <a class="nav-link" href="/app/order/orders.html">Orders</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/app/ingredient/ingredients.html"
-              >Ingredients</a
-            >
+            <a class="nav-link" href="/app/ingredient/ingredients.html">Ingredients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/app/beverage/beverage.html">Beverage</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/app/size/sizes.html">Sizes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/app/report/report.html">Report</a>
           </li>
         </ul>
       </nav>
@@ -110,11 +108,12 @@
               <p id="size">{{size.name}} - ${{size.price}}</p>
             </td>
             <td id="ingredients">
-              {{#detail}} {{#beverage}}
-              <p>{{name}} - ${{beverage_price}}</p>
-              {{/beverage}} {{#ingredient}}
-              <p>{{name}} - ${{ingredient_price}}</p>
-              {{/ingredient}} {{/detail}}
+              {{#ingredient_detail}}
+              <p>{{ingredient.name}} - ${{ingredient.price}}</p>
+              {{/ingredient_detail}}
+              {{#beverage_detail}}
+              <p>{{beverage.name}} - ${{beverage.price}}</p>
+              {{/beverage_detail}}
             </td>
           </tr>
           <tr class="table-active">
